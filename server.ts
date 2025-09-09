@@ -11,7 +11,7 @@ const port = process.env.PORT || 5173
 const base = process.env.BASE || '/'
 
 // Cached production assets
-const templateHtml = !isProduction
+const templateHtml = isProduction
   ? await fs.readFile('./dist/client/index.html', 'utf-8')
   : ''
 
@@ -49,6 +49,7 @@ app.use('*all', async (req, res) => {
       render = (await vite?.ssrLoadModule('/src/entry-server.ts')!).render
     } else {
       template = templateHtml
+      //@ts-ignore
       const prodRender = (await import('./dist/server/entry-server.js')).render
       render = (url) => Promise.resolve(prodRender(url))
     }
