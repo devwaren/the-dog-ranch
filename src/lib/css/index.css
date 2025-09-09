@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Style+Script&display=swap');
+@import "tailwindcss";
+
+:where(.hidescroll, #app) {
+    overflow: auto;
+    /* or scroll */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE 10+ */
+}
+
+:where(.hidescroll, #app)::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Opera */
+}
+
+[vite-plugin-checker-error-overlay] {
+    z-index: 99;
+    display: block;
+}
