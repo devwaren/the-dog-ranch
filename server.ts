@@ -11,7 +11,7 @@ const port = process.env.PORT || 5173
 const base = process.env.BASE || '/'
 
 // Cached production assets
-const templateHtml = isProduction
+const templateHtml = !isProduction
   ? await fs.readFile('./dist/client/index.html', 'utf-8')
   : ''
 
