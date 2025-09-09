@@ -62,9 +62,9 @@ app.use('*all', async (req, res) => {
 
     res.status(200).set({ 'Content-Type': 'text/html' }).send(html)
   } catch (e) {
-    vite?.ssrFixStacktrace(e)
-    console.log(e.stack)
-    res.status(500).end(e.stack)
+    vite?.ssrFixStacktrace(e as Error)
+    console.log((e as Error).stack)
+    res.status(500).end((e as Error).stack)
   }
 })
 
