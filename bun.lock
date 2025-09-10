@@ -5,6 +5,7 @@
       "name": "dog-ranch",
       "dependencies": {
         "@devwareng/vanilla-ts": "^1.2.134",
+        "@rollup/rollup-linux-x64-gnu": "^4.50.1",
         "animate.css": "^4.1.1",
         "compression": "^1.8.1",
         "express": "^5.1.0",
