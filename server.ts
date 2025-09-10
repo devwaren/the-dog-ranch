@@ -14,44 +14,56 @@ const base = process.env.BASE || '/'
 // Create Express app
 const app = express()
 
-if (!isDev) {
-  app.use((req, res, next) => {
-    const nonce = crypto.randomBytes(16).toString("base64");
-    res.locals.nonce = nonce;
+app.use((req, res, next) => {
+  const nonce = crypto.randomBytes(16).toString("base64");
+  res.locals.nonce = nonce;
 
-    const csp = [
-      "default-src 'self'",
-      "img-src 'self' data: https:",
-      "style-src 'self' 'unsafe-inline'",
-      `script-src 'self' 'nonce-${nonce}' https://www.googletagmanager.com https://www.google-analytics.com`,
-      "font-src 'self' https: data:",
-      "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://www.googleapis.com https://www.gstatic.com",
-      "object-src 'none'",
-      "base-uri 'self'",
-      "form-action 'self'",
+  const baseDirectives = [
+    "default-src 'self'",
+    "img-src 'self' data: https:",
+    `style-src 'self' 'nonce-${nonce}'`,
+    `script-src 'self' 'nonce-${nonce}' https://www.googletagmanager.com https://www.google-analytics.com`,
+    "font-src 'self' https: data:",
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+  ];
 
-    ].join("; ");
+  // 🔹 Dev needs relaxed rules (Vite injects eval + WS + inline styles)
+  if (isDev) {
+    baseDirectives.push(
+      `'unsafe-inline'`, // for Vite <style> injections
+      `'unsafe-eval'`,   // for Vite source maps
+      "connect-src 'self' ws: wss: https://www.google-analytics.com https://www.googletagmanager.com https://www.googleapis.com https://www.gstatic.com"
+    );
+  } else {
+    baseDirectives.push(
+      "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://www.googleapis.com https://www.gstatic.com"
+    );
+  }
 
-    // ✅ Security headers
-    res.setHeader("X-Frame-Options", "DENY"); // Prevent clickjacking
-    res.setHeader("X-Content-Type-Options", "nosniff"); // Block MIME type sniffing
-    res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin"); // Limit referrer leakage
-    res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()"); // Block sensitive APIs
-    res.setHeader("Cross-Origin-Opener-Policy", "same-origin"); // Protect against XS-Leaks
-    res.setHeader("Cross-Origin-Embedder-Policy", "cross-origin"); // Required for COOP
-    res.setHeader("Cross-Origin-Resource-Policy", "same-origin"); // Restrict cross-origin resource sharing
+  const csp = baseDirectives.join("; ");
 
-    // ✅ CSP handling
-    const ua = req.headers['user-agent'] || "";
-    if (/Lighthouse|Chrome-Lighthouse|PageSpeed/i.test(ua)) {
-      res.setHeader("Content-Security-Policy-Report-Only", csp);
-    } else {
-      res.setHeader("Content-Security-Policy", csp);
-    }
+  // ✅ Security headers
+  res.setHeader("X-Frame-Options", "DENY");
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+  res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
+  res.setHeader("Cross-Origin-Embedder-Policy", "cross-origin");
+  res.setHeader("Cross-Origin-Resource-Policy", "same-origin");
 
-    next();
-  });
-}
+  // ✅ CSP handling
+  const ua = req.headers['user-agent'] || "";
+  if (/Lighthouse|Chrome-Lighthouse|PageSpeed/i.test(ua)) {
+    res.setHeader("Content-Security-Policy-Report-Only", csp);
+  } else {
+    res.setHeader("Content-Security-Policy", csp);
+  }
+
+  next();
+});
+
 
 
 
