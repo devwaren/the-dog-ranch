@@ -36,7 +36,7 @@ export default function index(DOM: HTMLElement) {
                     <h3 class="text-4xl md:text-5xl font-semibold text-amber-600">
                         Signature Programs
                     </h3>
-                    <p class="text-base text-gray-500 leading-relaxed">
+                    <p class="text-sm lg:text-base text-gray-500 leading-relaxed">
                         Our signature dog training programs are designed to build strong, lasting bonds
                         between you and your dog. From foundational obedience to specialized behavior
                         solutions, each program is carefully tailored to meet your dog’s unique needs.
@@ -44,7 +44,7 @@ export default function index(DOM: HTMLElement) {
                         supporting an older companion, our proven methods create confident,
                         well-mannered, and happy dogs.
                     </p>
-                    <div class="grid grid-cols-2 gap-4 max-w-1/2 text-sm">
+                    <div class="grid md:grid-cols-2 gap-4 w-full lg:max-w-1/2 text-sm">
                         <button
                             class="px-6 py-3 rounded-full bg-gray-500 text-white font-semibold shadow-lg hover:bg-gray-600 transition cursor-pointer animate__animated animate__zoomIn animate__delay-1s">
                             Explore Programs

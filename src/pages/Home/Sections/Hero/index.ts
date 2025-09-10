@@ -17,20 +17,20 @@ export default function Hero(DOM: HTMLElement) {
     const ui = useTSElements(
         DOM,
         html`
-        <section class="min-h-screen grid lg:grid-cols-2 py-8 px-4 gap-16 relative">
+        <section class="min-h-screen grid lg:grid-cols-2 py-32 lg:py-8 px-4 gap-16 relative">
             <div class="flex flex-col gap-4 h-full justify-center animate__animated animate__fadeInUp">
                 <p class="bg-gradient-to-r from-orange-500 via-orange-400 to-orange-300 px-4 py-1 rounded-md w-fit text-white">
                     Membership Only
                 </p>
-                <h2 class="text-7xl font-extrabold">
+                <h2 class="text-4xl lg:text-7xl font-extrabold">
                     Exclusive Canine Club for Discerning Dog Parents
                 </h2>
-                <p class="my-8 text-gray-700 text-lg">
+                <p class="my-4 lg:my-8 text-gray-700 text-base lg:text-lg">
                     Boutique boarding, precision training, and daily enrichment—crafted
                     exclusively for members. Every detail designed for your dog’s
                     wellbeing and joy.
                 </p>
-                <div class="grid grid-cols-3 gap-4 h-[40px]">
+                <div class="grid lg:grid-cols-3 gap-4 min-h-[40px]">
                     <button
                         class="flex items-center justify-between px-4 py-1 bg-amber-600 text-white rounded-md hover:bg-amber-700 transition">
                         <span>Request Invitation</span>
@@ -45,29 +45,29 @@ export default function Hero(DOM: HTMLElement) {
                         Download Brochure
                     </button>
                 </div>
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid md:grid-cols-2 gap-4">
                     ${icons}
                 </div>
             </div>
         
-            <div class="grid animate__animated animate__zoomIn relative overflow-hidden min-h-[40em]">
+            <div class="grid animate__animated animate__zoomIn relative overflow-hidden min-h-[20em] lg:min-h-[40em]">
                 <div class="bg-[url('/corgi.png')] bg-center bg-cover w-full h-full"></div>
                 <div class="absolute bottom-[20px] right-0">
                     <div>
-                        <h2>Trusted by. Dog Owners</h2>
-                        <p class="text-6xl font-semibold">16k +</p>
+                        <h2 class="text-sm">Trusted by. Dog Owners</h2>
+                        <p class="text-xl lg:text-6xl font-semibold">16k +</p>
                     </div>
                 </div>
         
                 <!-- Hug 1 (fades in first) -->
                 <div
-                    class="w-40 h-40 overflow-hidden absolute top-[20%] right-[20px] rounded-xl shadow animate__animated animate__zoomIn animate__delay-1s">
+                    class="w-20 h-20 lg:w-40 lg:h-40 overflow-hidden absolute top-[20%] right-[20px] rounded-xl shadow animate__animated animate__zoomIn animate__delay-1s">
                     <img src="/hug1.webp" alt="hug" width="400" height="400" class="object-cover">
                 </div>
         
                 <!-- Hug 2 (fades in after hug1) -->
                 <div
-                    class="w-40 h-40 overflow-hidden absolute bottom-[20%] left-[40px] rounded-xl shadow animate__animated animate__zoomIn animate__delay-2s">
+                    class="w-20 h-20 lg:w-40 lg:h-40 overflow-hidden absolute bottom-[20%] left-[40px] rounded-xl shadow animate__animated animate__zoomIn animate__delay-2s">
                     <img src="/hug2.webp" alt="hug" width="400" height="600" class="object-cover w-full h-full">
                 </div>
             </div>

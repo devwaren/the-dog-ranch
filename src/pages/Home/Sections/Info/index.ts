@@ -5,21 +5,21 @@ export default function Info(DOM: HTMLElement) {
     const ui = useTSElements(
         DOM,
         html`
-        <section class="grid grid-cols-1 lg:grid-cols-3 min-h-[40em] gap-12 px-6 lg:px-12 py-32">
+        <section class="grid grid-cols-1 lg:grid-cols-3 min-h-[40em] gap-12 md:px-6 lg:px-12 py-16">
         
             <!-- ✅ Left column -->
-            <div class="flex flex-col justify-evenly gap-24 animate__animated animate__fadeInLeft animate__delay-1s">
+            <div class="flex flex-col justify-evenly gap-8 lg:gap-24 animate__animated animate__fadeInLeft animate__delay-1s">
                 <div class="grid gap-4">
-                    <h3 class="text-4xl lg:text-5xl font-bold leading-tight">Dogs Make Life Better</h3>
-                    <p class="text-gray-600 text-lg leading-relaxed">
+                    <h3 class="text-2xl md:text-4xl lg:text-5xl font-bold leading-tight">Dogs Make Life Better</h3>
+                    <p class="text-gray-600 text-base md:text-lg leading-relaxed">
                         Dogs are more than just adorable companions, they bring incredible benefits into our
                         everyday lives.
                     </p>
                 </div>
         
                 <div class="grid gap-4">
-                    <h3 class="text-4xl lg:text-5xl font-bold leading-tight">Relaxation and Stress Relief</h3>
-                    <p class="text-gray-600 text-lg leading-relaxed">
+                    <h3 class="text-2xl md:text-4xl lg:text-5xl font-bold leading-tight">Relaxation and Stress Relief</h3>
+                    <p class="text-gray-600 text-base md:text-lg leading-relaxed">
                         The simple presence of a dog can reduce stress levels, calm the mind, and promote
                         relaxation.
                     </p>
@@ -47,13 +47,13 @@ export default function Info(DOM: HTMLElement) {
         
             <!-- ✅ Right column -->
             <div class="flex flex-col justify-evenly gap-10 animate__animated animate__fadeInRight animate__delay-3s">
-                <p class="text-gray-700 text-lg leading-relaxed">
-                    <span class="font-semibold text-2xl text-amber-700">16 years</span> of experience —
+                <p class="text-gray-700 text-base lg:text-lg leading-relaxed">
+                    <span class="font-semibold text-lg lg:text-2xl text-amber-700">16 years</span> of experience —
                     over a decade of providing unparalleled care, training, and love for dogs.
                 </p>
         
                 <button
-                    class="px-6 py-3 bg-amber-700 text-lg text-white rounded-3xl shadow-md hover:bg-amber-800 transition max-w-max">
+                    class="px-6 py-3 bg-amber-700 text-lg text-white rounded-3xl shadow-md hover:bg-amber-800 transition w-full md:max-w-max">
                     Learn more
                 </button>
         

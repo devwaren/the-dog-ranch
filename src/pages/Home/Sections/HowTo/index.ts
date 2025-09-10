@@ -16,7 +16,7 @@ export default function HowTo(DOM: HTMLElement) {
 
             return html`
                 <div
-                    class="relative rounded-md text-white grid items-center px-6 overflow-hidden animate__animated animate__zoomIn ${delayClass}">
+                    class="relative rounded-md text-white grid items-center px-6 overflow-hidden animate__animated animate__zoomIn ${delayClass} py-16">
                     <div>
                         <div class="absolute top-0 left-0 w-full h-full ${image} bg-cover bg-center"></div>
                         <div class="absolute top-0 left-0 bg-black/60 w-full h-full"></div>
@@ -36,7 +36,7 @@ export default function HowTo(DOM: HTMLElement) {
         DOM,
         html`
         <section class="my-16">
-            <div class="grid grid-cols-3 min-h-[20em] gap-4">
+            <div class="grid lg:grid-cols-3 min-h-[20em] gap-4">
                 ${cards}
             </div>
         </section>

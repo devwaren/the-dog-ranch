@@ -36,8 +36,8 @@ export default function TrainingPrograms(DOM: HTMLElement) {
             <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-l from-white via-white/20 to-transparent"></div>
         
             <div class="relative max-w-screen-2xl mx-auto flex flex-col justify-between w-full h-full">
-                <div class="h-[25em]"></div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full h-[10em] gap-8">
+                <div class="lg:h-[25em]"></div>
+                <div class="py-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full h-[10em] gap-8">
                     ${membershipCard}
                 </div>
             </div>
