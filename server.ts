@@ -27,8 +27,6 @@ app.use((req, res, next) => {
     "object-src 'none'",
     "base-uri 'self'",
     "form-action 'self'",
-    "require-trusted-types-for 'script'",   // ✅ Enforce Trusted Types
-    "trusted-types dompurify"              // ✅ Allow only DOMPurify as a Trusted Type sink
   ];
 
   // 🔹 Dev needs relaxed rules (Vite injects eval + WS + inline styles)
