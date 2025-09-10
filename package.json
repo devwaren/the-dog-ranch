@@ -4,12 +4,12 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "bunx vite",
+    "dev": "node --loader ts-node/esm server.ts",
     "build": "bun run build:client && bun run build:server",
     "build:client": "bunx vite build --outDir dist/client",
     "build:server": "bunx vite build --ssr src/entry-server.ts --outDir dist/server",
-    "preview": "NODE_ENV=production bunx tsx server.ts",
-    "start": "NODE_ENV=production bunx tsx server.ts",
+    "preview": "NODE_ENV=production node --loader ts-node/esm server.ts server.ts",
+    "start": "NODE_ENV=production node --loader ts-node/esm server.ts server.ts",
     "vercel-build": "bun run build"
   },
   "dependencies": {
@@ -29,7 +29,7 @@
     "boxicons": "^2.1.4",
     "rollup": "3",
     "tailwindcss": "^4.1.13",
-    "tsx": "^4.20.5",
+    "ts-node": "^10.9.2",
     "typescript": "~5.9.2",
     "vite": "^5",
     "vite-plugin-checker": "^0.10.3"
