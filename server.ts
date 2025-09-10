@@ -113,6 +113,7 @@ app.use('*all', async (req, res) => {
       .replace(`<!--app-html-->`, rendered.html ?? '')
       // Optional: inject nonce into all inline scripts automatically
       .replace(/<script(?![^>]*src)/g, `<script nonce="${res.locals.nonce}"`)
+      .replace(/<style(?![^>]*>)/g, `<style nonce="${res.locals.nonce}"`)
 
     res.status(200).set({ 'Content-Type': 'text/html' }).send(html)
   } catch (e) {
