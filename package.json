@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "node --loader ts-node/esm server.ts",
+    "dev": "bun run server.ts",
     "build": "bun run build:client && bun run build:server",
     "build:client": "bunx vite build --outDir dist/client",
     "build:server": "bunx vite build --ssr src/entry-server.ts --outDir dist/server",
