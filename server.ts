@@ -36,6 +36,7 @@ app.use((req, res, next) => {
       `'unsafe-eval'`,   // for Vite source maps
       "connect-src 'self' ws: wss: https://www.google-analytics.com https://www.googletagmanager.com https://www.googleapis.com https://www.gstatic.com"
     );
+    baseDirectives[2] = `style-src 'self' 'unsafe-inline' 'nonce-${nonce}'`;
   } else {
     baseDirectives.push(
       "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://www.googleapis.com https://www.gstatic.com"
