@@ -1,4 +1,4 @@
-import { Home, Membership, NotFound, Programs } from "@/pages";
+import { Home, Membership, NotFound, Params, Programs } from "@/pages";
 import { TSRouter, useTSParams, useTSPurifier } from "@devwareng/vanilla-ts";
 
 export const Router = (DOM: HTMLElement, websiteName: string) => {
@@ -14,6 +14,10 @@ export const Router = (DOM: HTMLElement, websiteName: string) => {
             {
                 path: "/programs",
                 element: () => Programs(DOM)
+            },
+            {
+                path: "/params/:id",
+                element: (_e) => Params(DOM)
             },
             {
                 path: "/membership",
